@@ -1,0 +1,96 @@
+# Modeline {
+#	 vi: foldmarker={,} foldmethod=marker foldlevel=0 tabstop=4 filetype=sh
+# }
+
+
+# Custom Scripts {
+set path = ($HOME/helper_scripts $path)
+set path = ($HOME/helper_scripts/nvim_tmux_config $path)
+# }
+
+
+# Custom Apps {
+
+# Custom python {
+
+set path = ( $HOME/.local/python/bin $path )
+
+# }
+set path = ($HOME/.local/tree/bin $path)
+set path = ($HOME/.local/cmake/bin $path)
+#set path = ($HOME/.local/ncurses/bin $path)
+set path = ($HOME/.local/ncurses_for_tmux/bin $path)
+#set path = ($HOME/.local/screen/bin $path)
+set path = ($HOME/.local/tmux/bin $path)
+set path = ($HOME/.local/htop/bin $path)
+set path = ($HOME/.local/neovim/bin $path)
+set path = ($HOME/.local/ripgrep $path)
+set path = ($HOME/.local/numactl/bin $path)
+#setenv LD_LIBRARY_PATH "$HOME/.local/ncurses/lib":${LD_LIBRARY_PATH}
+setenv LD_LIBRARY_PATH "$HOME/.local/ncurses_for_tmux/lib":${LD_LIBRARY_PATH}
+setenv LD_LIBRARY_PATH "$HOME/.local/libevent/lib":${LD_LIBRARY_PATH}
+
+# bear for compile_commands.json {
+# git clone https://github.com/rizsotto/Bear.git
+set path = ($HOME/.local/bear $path)
+# }
+
+# Compiledb for compile_commands.json (used by clangd) {
+#
+# Steps to build
+# 1. git clone https://github.com/nickdiego/compiledb.git
+# 2. cd compiledb
+# 3. pip3 install .
+# 4. pip3 show compiledb
+# 5. python -m compiledb -n make -f Makefile -c build/linux_x86_64
+
+# my make path {
+setenv MY_MAKE_PATH $HOME/.local/make/bin
+set path = ( ${MY_MAKE_PATH} $path )
+# }
+
+# setup compiledb command shortcut {
+setenv PROJECT1_US_1 $HOME/project1_us_1
+setenv PROJECT1_SRC_ROOT ${PROJECT1_US_1}/src/project1
+setenv GEN_COMPILEDB "python3 -m compiledb -n make all"
+setenv MV_COMPILEDB "mv compile_commands.json ${PROJECT1_SRC_ROOT}/."
+alias compiledb 'make clean; ${GEN_COMPILEDB}; ${MV_COMPILEDB}'
+# }
+
+# }
+
+# }
+
+
+# My Aliases {
+alias ls 'ls --color'
+
+# git diff {
+alias gdf 'git difftool -y'
+# }
+
+alias top "htop"
+# }
+
+
+# git path {
+set path = ($HOME/.local/git/bin/ $path)
+# }
+
+
+# nvim {
+alias vim 'nvim'
+alias vi 'nvim'
+setenv VIMRUNTIME "$HOME/.local/neovim/share/nvim/runtime"
+# }
+
+
+# us_main src {
+
+# set gcc tools path {
+set path = ($HOME/.local/gcc/bin $path)
+# }
+
+# }
+
+
